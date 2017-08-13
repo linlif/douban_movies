@@ -1,0 +1,460 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body, html {
+      background-color: rgb(246, 250, 249);
+    }
+
+    .container {
+      width: 80%;
+      margin: 10px auto;
+      padding: 0 10px;
+    }
+
+    .container .content {
+      border-top: 1px solid rgb(42, 172, 94);
+      /*border-top: none;*/
+
+    }
+
+    #ul,
+    #ul2 {
+      clear: both;
+      overflow: hidden;
+      list-style: none;
+      margin: 20px auto;
+    }
+
+    #ul .line,
+    #ul2 .line {
+      /*width: 100%;*/
+      height: 1px;
+      background-color: #f2f2f2;
+    }
+
+    #ul li,
+    #ul2 li {
+      color: darkred;
+      margin-right: 20px;
+      display: inline-block;
+      line-height: 20px;
+      width: 150px;
+      overflow: hidden;
+      vertical-align: top;
+      margin-bottom: 20px;
+    }
+
+    #ul li .title,
+    #ul2 li .title {
+      font-size: 14px;
+      margin-right: 5px;
+      color: brown;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    #ul li .original_title,
+    #ul2 li .original_title {
+      font-size: 12px;
+      color: #666;
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    #ul li .imgBox,
+    #ul2 li .imgBox {
+      /*width: 100px;*/
+    }
+
+    #ul li .topNum,
+    #ul2 li .topNum {
+      color: black;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    #ul li img,
+    #ul2 li img {
+      width: 100%;
+      display: block;
+      margin-bottom: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    #ul li p,
+    #ul2 li p {
+      color: #666666;
+      font-size: 12px;
+    }
+
+    #ul li .average,
+    #ul2 li .average {
+      font-size: 12px;
+    }
+
+    #ul li .average .score,
+    #ul2 li .average .score {
+      color: orangered;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    #page,
+    #page2 {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    #page a,
+    #page2 a {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid #666;
+      margin-right: 5px;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+
+    #page a:hover,
+    #page2 a:hover {
+      background-color: darkred;
+      color: white;
+    }
+
+    #page a.active,
+    #page2 a.active {
+      background-color: darkred;
+      color: white;
+    }
+
+    #myDiv {
+      overflow: hidden;
+      /*border-bottom: 1px solid brown;*/
+      width: 100%;
+      margin-bottom: -1px;
+    }
+
+    #myDiv h2 {
+      float: left;
+      font-size: 100%;
+      /*margin-right: 5px;*/
+      margin-left: 10px;
+      cursor: pointer;
+      font-style: normal;
+      font-weight: normal;
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: rgb(246, 250, 249);
+
+    }
+
+    #myDiv h2.active {
+      /*position: relative;*/
+      /*background-color: rgb(42, 172, 94);*/
+      /*color: #fff;*/
+      border: 1px solid rgb(42, 172, 94);
+      border-bottom: none;
+      /*margin-top: -1px;*/
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+
+    .header {
+      overflow: hidden;
+      background-color: rgb(240, 243, 245);
+      width: 100%;
+      height: 98px;
+      border-top: 2px solid rgb(42, 172, 94);
+      margin-bottom: 30px;
+    }
+
+    .header .logo{
+      text-decoration: none;
+      font-size: 28px;
+      font-weight: bold;
+      color: #27a;
+      float: left;
+      width: 140px;
+      height: 35px;
+      margin-top: -3px;
+    }
+
+    .header .serachBox {
+      overflow: hidden;
+      margin-left: 200px;
+      width: 510px;
+      margin-top: 28px;
+      box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+      border-radius: 5px;
+    }
+
+    .header .serachBox .search {
+      float: left;
+      width: 460px;
+      height: 34px;
+      outline: none;
+      padding: 0 14px;
+      font-size: 14px;
+      /*margin-right: 5px;*/
+      /*border: 1px solid rgb(146,155,162);*/
+      border: none;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    .header .serachBox .submit{
+      border: none;
+      width: 50px;
+      height: 34px;
+      background-color: rgb(146,155,162);
+      color: white;
+      outline: none;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      /*margin-left: -60px;*/
+      box-shadow: 0 1px 2px #999;
+
+    }
+
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="container">
+    <a class="logo" href="">豆瓣电影</a>
+    <div class="serachBox">
+      <input class="search" type="text" placeholder="电影、影人、影院、电视剧">
+      <input class="submit" type="button" value="搜索">
+    </div>
+
+  </div>
+</div>
+<div class="container">
+  <div id="myDiv">
+    <h2 class="in_theaters active">热映电影-北京</h2>
+    <h2 class="top250">豆瓣评分Top250电影</h2>
+  </div>
+  <div class="content">
+    <div>
+      <ul id="ul"></ul>
+      <div id="page"></div>
+    </div>
+    <div style="display: none">
+      <ul id="ul2"></ul>
+      <div id="page2"></div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+<script
+        src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+  $(function () {
+    var count = 12;
+    var $ul = $('#ul');
+    var $ul2 = $('#ul2');
+
+    // 渲染数据函数,返回一个DOM对象
+    function createLis(datas) {
+      var lis = '';
+      var json = datas;
+      var datas = json.subjects;
+//      console.log(json.start);
+      for (var i = 0; i < datas.length; i++) {
+        lis +=
+            '<a target="_blank" href="' + datas[i].alt + '"><li>' +
+            '<p class="topNum">Top.' + (json.start + i + 1) + '</p>' +
+            '<h1 class="title">' + datas[i].title + '</h1>' +
+            '<p class="original_title">' + datas[i].original_title + '</p>' +
+            '<div class="imgBox"><img src="' + datas[i].images.large + '"></div>' +
+            '<p class="average">评分：<b class="score">' + datas[i].rating.average + '</b> 分</p>' +
+            '<p class="genres">类型：' + datas[i].genres + '</p>' +
+            '<p class="directors">导演：' + datas[i].directors[0].name + '</p>' +
+            '<p class="year">年份：' + datas[i].year + '</p>' +
+            '</li></a>';
+      }
+      return lis;
+    }
+
+    // 院线热映
+    function showContent1() {
+      $.ajax({
+        type: "get", //jquey是不支持post方式跨域的
+        async: false,
+        data: {
+          count: count,
+          start: '0'
+        },
+//      url: "https://api.douban.com/v2/book/user/119280372/collections", //跨域请求的URL
+        url: "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b", //跨域请求的URL
+        dataType: "jsonp",
+        //传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
+        jsonp: "callback",
+        //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+        jsonpCallback: "success_jsonpCallback",
+        //成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+        success: function (json) {
+          var datas = json.collections;
+          var page = $('#page');
+          var aaa = '';
+
+          // 生成页码
+          for (var j = 0; j < Math.ceil(json.total / count); j++) {
+            aaa += '<a>' + (j + 1) + '</a>';
+          }
+          page.html(aaa);
+
+          // 渲染数据
+          var datas = json;
+          $ul.html(createLis(datas));
+
+          // 点击页码请求对应数据
+          var as = $('#page a');
+          // 动态添加激活状态类名
+          as.eq(0).addClass('active');
+          for (var k = 0; k < as.length; k++) {
+            (function (k) {
+              as[k].onclick = function () {
+//              this.setAttribute('class','active');
+                $(this).addClass('active').siblings().removeClass('active');
+                $.ajax({
+                  type: "get", //jquey是不支持post方式跨域的
+                  async: false,
+                  data: {
+                    count: count,
+                    start: k * count
+                  },
+//                url: "https://api.douban.com/v2/book/user/119280372/collections", //跨域请求的URL
+                  url: "https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b", //跨域请求的URL
+                  dataType: "jsonp",
+                  //传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
+                  jsonp: "callback",
+                  //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+                  jsonpCallback: "success_jsonpCallback",
+                  //成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+                  success: function (json) {
+                    var datas = json;
+                    // 渲染数据
+                    $ul.html(createLis(datas));
+                  }
+                });
+              }
+            })(k);
+//          k = 0;
+          } // end of for
+        }
+      });
+    }
+
+    // top250
+    function showContent2() {
+      $.ajax({
+        type: "get", //jquey是不支持post方式跨域的
+        async: false,
+        data: {
+          count: count,
+          start: '0'
+        },
+//      url: "https://api.douban.com/v2/book/user/119280372/collections", //跨域请求的URL
+        url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b", //跨域请求的URL
+        dataType: "jsonp",
+        //传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
+        jsonp: "callback",
+        //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+        jsonpCallback: "success_jsonpCallback",
+        //成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+        success: function (json) {
+          var datas = json.collections;
+          var page2 = $('#page2');
+          var aaa = '';
+
+          // 生成页码
+          for (var j = 0; j < Math.ceil(json.total / count); j++) {
+            aaa += '<a>' + (j + 1) + '</a>';
+          }
+          page2.html(aaa);
+
+          // 渲染数据
+          var datas = json;
+          $ul2.html(createLis(datas));
+
+          // 点击页码请求对应数据
+          var as = $('#page2 a');
+          // 动态添加激活状态类名
+          as.eq(0).addClass('active');
+          for (var k = 0; k < as.length; k++) {
+            (function (k) {
+              as[k].onclick = function () {
+//              this.setAttribute('class','active');
+                $(this).addClass('active').siblings().removeClass('active');
+                $.ajax({
+                  type: "get", //jquey是不支持post方式跨域的
+                  async: false,
+                  data: {
+                    count: count,
+                    start: k * count
+                  },
+//                url: "https://api.douban.com/v2/book/user/119280372/collections", //跨域请求的URL
+                  url: "https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b", //跨域请求的URL
+                  dataType: "jsonp",
+                  //传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
+                  jsonp: "callback",
+                  //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+                  jsonpCallback: "success_jsonpCallback",
+                  //成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+                  success: function (json) {
+                    var datas = json;
+                    // 渲染数据
+                    $ul2.html(createLis(datas));
+                  }
+                });
+              }
+            })(k);
+//          k = 0;
+          } // end of for
+        }
+      });
+    }
+
+    showContent2();
+    showContent1();
+
+
+    // 顶部Tab切换
+    $('#myDiv h2').on('click', function () {
+      var index = $(this).index() - 1;
+      var tabcontent = $('.content >div');
+      var $ulLis = $('#ul').find('li');
+      var $ul2Lis = $('#ul2').find('li');
+
+      tabcontent.eq(index).css('display', 'block').siblings().css('display', 'none');
+      $(this).addClass('active').siblings().removeClass('active');
+      if (index === 1 && $ul2Lis.length === 0) {
+        showContent2();
+        console.log($ul2Lis.length);
+      }
+
+      if (index === 0 && $ulLis.length === 0) {
+        showContent1();
+        console.log($ulLis.length);
+      }
+    })
+
+  });
+
+
+</script>
+</html>
