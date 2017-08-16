@@ -5,31 +5,44 @@
   <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-<div class="header">
-  <div class="container">
-    <a class="logo" href="">豆瓣电影</a>
-    <div class="serachBox">
-      <input class="search" type="text" placeholder="电影、影人、影院、电视剧">
-      <input class="submit" type="button" value="搜索">
-    </div>
-
-  </div>
-</div>
-<div class="container">
-  <div id="myDiv">
-    <h2 class="in_theaters active">热映电影-北京</h2>
-    <h2 class="top250">豆瓣评分Top250电影</h2>
-  </div>
-  <div class="content">
-    <div>
-      <ul id="ul"></ul>
-      <div id="page"></div>
-    </div>
-    <div style="display: none">
-      <ul id="ul2"></ul>
-      <div id="page2"></div>
+<div class="wrapper">
+  <div class="header">
+    <div class="commentWidth">
+      <div class="nav-primery">
+        <div class="logo-wrapper">
+          <a class="logo" href="">豆瓣电影</a>
+        </div>
+        <div class="serachBox-wrapper">
+          <div class="serachBox">
+            <input class="search" type="text" placeholder="电影、影人、影院、电视剧">
+            <input class="submit" type="button" value="搜索">
+          </div>
+        </div>
+      </div>
+      <div class="nav-secondry">
+        <div id="myDiv">
+          <h2 class="in_theaters active">热映电影-北京</h2>
+          <h2 class="top250">豆瓣评分Top250电影</h2>
+        </div>
+      </div>
     </div>
   </div>
+  <!--内容区-->
+  <div class="commentWidth">
+      <div class="content">
+        <div>
+          <ul id="ul"></ul>
+          <div id="page"></div>
+        </div>
+        <div style="display: none">
+          <ul id="ul2"></ul>
+          <div id="page2"></div>
+        </div>
+      </div>
+  </div>
+  <!--footer-->
+  <div class="footer">Powerby by Linlif @ <a class="blog" href="https://
+linlif.github.io" target="_blank">https://linlif.github.io</a></div>
 </div>
 
 </body>
