@@ -1,0 +1,222 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    background-color: rgb(246, 250, 249);
+}
+
+.container {
+    width: 80%;
+    margin: 10px auto;
+    padding: 0 10px;
+}
+
+.container .content {
+    border-top: 1px solid rgb(42, 172, 94);
+    /*border-top: none;*/
+
+}
+
+#ul,
+#ul2 {
+    clear: both;
+    overflow: hidden;
+    list-style: none;
+    margin: 20px auto;
+}
+
+#ul .line,
+#ul2 .line {
+    /*width: 100%;*/
+    height: 1px;
+    background-color: #f2f2f2;
+}
+
+#ul li,
+#ul2 li {
+    color: darkred;
+    margin-right: 20px;
+    display: inline-block;
+    line-height: 20px;
+    width: 150px;
+    overflow: hidden;
+    vertical-align: top;
+    margin-bottom: 20px;
+}
+
+#ul li .title,
+#ul2 li .title {
+    font-size: 14px;
+    margin-right: 5px;
+    color: brown;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#ul li .original_title,
+#ul2 li .original_title {
+    font-size: 12px;
+    color: #666;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#ul li .imgBox,
+#ul2 li .imgBox {
+    /*width: 100px;*/
+}
+
+#ul li .topNum,
+#ul2 li .topNum {
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#ul li img,
+#ul2 li img {
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#ul li p,
+#ul2 li p {
+    color: #666666;
+    font-size: 12px;
+}
+
+#ul li .average,
+#ul2 li .average {
+    font-size: 12px;
+}
+
+#ul li .average .score,
+#ul2 li .average .score {
+    color: orangered;
+    font-size: 14px;
+    font-style: italic;
+}
+
+#page,
+#page2 {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#page a,
+#page2 a {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid #666;
+    margin-right: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+#page a:hover,
+#page2 a:hover {
+    background-color: darkred;
+    color: white;
+}
+
+#page a.active,
+#page2 a.active {
+    background-color: darkred;
+    color: white;
+}
+
+#myDiv {
+    overflow: hidden;
+    /*border-bottom: 1px solid brown;*/
+    width: 100%;
+    margin-bottom: -1px;
+}
+
+#myDiv h2 {
+    float: left;
+    font-size: 100%;
+    /*margin-right: 5px;*/
+    margin-left: 10px;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: rgb(246, 250, 249);
+
+}
+
+#myDiv h2.active {
+    /*position: relative;*/
+    /*background-color: rgb(42, 172, 94);*/
+    /*color: #fff;*/
+    border: 1px solid rgb(42, 172, 94);
+    border-bottom: none;
+    /*margin-top: -1px;*/
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.header {
+    overflow: hidden;
+    background-color: rgb(240, 243, 245);
+    width: 100%;
+    height: 98px;
+    border-top: 2px solid rgb(42, 172, 94);
+    margin-bottom: 20px;
+}
+
+.header .logo {
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
+    color: #27a;
+    float: left;
+    width: 140px;
+    height: 35px;
+    margin-top: -3px;
+}
+
+.header .serachBox {
+    overflow: hidden;
+    margin-left: 200px;
+    width: 510px;
+    margin-top: 28px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.header .serachBox .search {
+    float: left;
+    width: 460px;
+    height: 34px;
+    outline: none;
+    padding: 0 14px;
+    font-size: 14px;
+    /*margin-right: 5px;*/
+    /*border: 1px solid rgb(146,155,162);*/
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.header .serachBox .submit {
+    border: none;
+    width: 50px;
+    height: 34px;
+    background-color: rgb(146, 155, 162);
+    color: white;
+    outline: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    /*margin-left: -60px;*/
+    box-shadow: 0 1px 2px #999;
+
+}
