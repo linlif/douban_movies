@@ -196,11 +196,11 @@ $(function () {
         }
         page3.html(aaa);
 
+
+
         // 渲染数据
         $ul3.html(createLis(datas));
-        // 设置其他tab隐藏
-        $('.content >div').eq(2).css('display', 'block').siblings().css('display', 'none');
-        $('#myDiv').children().removeClass('active');
+
 
         // 点击页码请求对应数据
         var as = $('#page3 a');
@@ -248,6 +248,8 @@ $(function () {
       var params = {count: count, start: '0', q: query};
       var url = 'https://api.douban.com/v2/movie/search?';
       showContent(params, url);
+      // 干掉高亮
+      $('#myDiv >h2').removeClass('active');
     }
   });
 
@@ -257,6 +259,8 @@ $(function () {
     var params = {count: count, start: '0', q: query};
     var url = 'https://api.douban.com/v2/movie/search?';
     showContent(params, url);
+    // 干掉高亮
+    $('#myDiv').find('h2').removeClass('active');
   });
 
   // 院线热映
