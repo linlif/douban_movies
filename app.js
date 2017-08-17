@@ -2,6 +2,7 @@ $(function () {
   var count = 6;
   var $ul = $('#ul');
   var $ul2 = $('#ul2');
+  var $ul3 = $('#ul3');
 
   // 渲染数据函数,返回一个DOM对象
   function createLis(datas) {
@@ -18,7 +19,7 @@ $(function () {
           '<div class="imgBox"><img src="' + datas[i].images.large + '"></div>' +
           '<p class="average">评分：<b class="score">' + datas[i].rating.average + '</b> 分</p>' +
           '<p class="genres">类型：' + datas[i].genres + '</p>' +
-          '<p class="directors">导演：' + datas[i].directors[0].name + '</p>' +
+          // '<p class="directors">导演：' + datas[i].directors[0].name + '</p>' +
           '<p class="year">年份：' + datas[i].year + '</p>' +
           '</li></a>';
     }
@@ -43,7 +44,7 @@ $(function () {
       jsonpCallback: "success_jsonpCallback",
       //成功获取跨域服务器上的json数据后,会动态执行这个callback函数
       success: function (json) {
-        var datas = json.collections;
+        // var datas = json.collections;
         var page = $('#page');
         var aaa = '';
 
@@ -164,6 +165,97 @@ $(function () {
       }
     });
   }
+
+  // 搜索结果
+  function searchResult(val) {
+    console.log(val);
+    $.ajax({
+      type: "get", //jquey是不支持post方式跨域的
+      async: false,
+      data: {
+        count: count,
+        start: '0'
+      },
+//      url: "https://api.douban.com/v2/book/user/119280372/collections", //跨域请求的URL
+      url: "https://api.douban.com/v2/movie/search?&q="+val, //跨域请求的URL "apikey=0b2bdeda43b5688921839c8ecb20399b"
+      dataType: "jsonp",
+      //传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
+      jsonp: "callback",
+      //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+      jsonpCallback: "success_jsonpCallback",
+      //成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+      success: function (json) {
+        var datas = json;
+        var page3 = $('#page3');
+        var aaa = '';
+
+        console.log(datas);
+
+
+        // 生成页码
+        for (var j = 0; j < Math.ceil(json.total / count); j++) {
+          aaa += '<a>' + (j + 1) + '</a>';
+        }
+        page3.html(aaa);
+
+        // 渲染数据
+        $ul3.html(createLis(datas));
+        // 设置其他tab隐藏
+        $('.content >div').eq(2).css('display','block').siblings().css('display','none');
+        $('#myDiv').children().removeClass('active');
+
+        // 点击页码请求对应数据
+        var as = $('#page3 a');
+        // 动态添加激活状态类名
+        as.eq(0).addClass('active');
+        for (var k = 0; k < as.length; k++) {
+          (function (k) {
+            as[k].onclick = function () {
+//              this.setAttribute('class','active');
+              $(this).addClass('active').siblings().removeClass('active');
+              $.ajax({
+                type: "get", //jquey是不支持post方式跨域的
+                async: false,
+                data: {
+                  count: count,
+                  start: k * count
+                },
+//                url: "https://api.douban.com/v2/book/user/119280372/collections", //跨域请求的URL
+                url: "https://api.douban.com/v2/movie/search?&q="+val, //跨域请求的URL
+                dataType: "jsonp",
+                //传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
+                jsonp: "callback",
+                //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+                jsonpCallback: "success_jsonpCallback",
+                //成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+                success: function (json) {
+                  var datas = json;
+                  // 渲染数据
+                  $ul3.html(createLis(datas));
+                }
+              });
+            }
+          })(k);
+//          k = 0;
+        } // end of for
+
+      }
+    })
+  }
+
+  // 回车键搜索
+  $('.search').on('keyup', function (event) {
+    var query = $('.search').val();
+    if (event.keyCode === 13) {
+      searchResult(query);
+    }
+  });
+
+  // 搜索按钮搜索
+  $('.submit').on('click',function () {
+    var query = $('.search').val();
+    searchResult(query);
+  });
 
   showContent1();
 //    showContent2();

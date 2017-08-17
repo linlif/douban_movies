@@ -152,7 +152,8 @@ body, html {
 }
 
 #ul,
-#ul2 {
+#ul2,
+#ul3 {
     clear: both;
     overflow: hidden;
     list-style: none;
@@ -160,14 +161,16 @@ body, html {
 }
 
 #ul .line,
-#ul2 .line {
+#ul2 .line,
+#ul3 .line{
     /*width: 100%;*/
     height: 1px;
     background-color: #f2f2f2;
 }
 
 #ul li,
-#ul2 li {
+#ul2 li,
+#ul3 li{
     color: darkred;
     margin-right: 20px;
     display: inline-block;
@@ -179,7 +182,8 @@ body, html {
 }
 
 #ul li .title,
-#ul2 li .title {
+#ul2 li .title,
+#ul3 li .title{
     font-size: 14px;
     margin-right: 5px;
     color: brown;
@@ -189,7 +193,8 @@ body, html {
 }
 
 #ul li .original_title,
-#ul2 li .original_title {
+#ul2 li .original_title,
+#ul3 li .original_title{
     font-size: 12px;
     color: #666;
     display: block;
@@ -199,19 +204,22 @@ body, html {
 }
 
 #ul li .imgBox,
-#ul2 li .imgBox {
+#ul2 li .imgBox,
+#ul3 li .imgBox{
     /*width: 100px;*/
 }
 
 #ul li .topNum,
-#ul2 li .topNum {
+#ul2 li .topNum,
+#ul3 li .topNum{
     color: black;
     font-weight: bold;
     font-style: italic;
 }
 
 #ul li img,
-#ul2 li img {
+#ul2 li img,
+#ul3 li img{
     width: 100%;
     display: block;
     margin-bottom: 5px;
@@ -219,31 +227,36 @@ body, html {
 }
 
 #ul li p,
-#ul2 li p {
+#ul2 li p ,
+#ul3 li p{
     color: #666666;
     font-size: 12px;
 }
 
 #ul li .average,
-#ul2 li .average {
+#ul2 li .average ,
+#ul3 li .average{
     font-size: 12px;
 }
 
 #ul li .average .score,
-#ul2 li .average .score {
+#ul2 li .average .score,
+#ul3 li .average .score{
     color: orangered;
     font-size: 14px;
     font-style: italic;
 }
 
 #page,
-#page2 {
+#page2,
+#page3{
     width: 100%;
     margin-bottom: 20px;
 }
 
 #page a,
-#page2 a {
+#page2 a,
+#page3 a{
     display: inline-block;
     padding: 4px 10px;
     border: 1px solid #666;
@@ -253,13 +266,15 @@ body, html {
 }
 
 #page a:hover,
-#page2 a:hover {
+#page2 a:hover,
+#page3 a:hover {
     background-color: darkred;
     color: white;
 }
 
 #page a.active,
-#page2 a.active {
+#page2 a.active,
+#page3 a.active{
     background-color: darkred;
     color: white;
 }
