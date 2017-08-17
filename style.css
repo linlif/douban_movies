@@ -80,7 +80,7 @@ body, html {
     margin-top: 26px;
     overflow: visible;
 }
-@media screen and (max-width: 340px){
+@media screen and (max-width: 375px){
     .header .logo-wrapper{
         flex: 0 0 64px;
     }
