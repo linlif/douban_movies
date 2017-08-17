@@ -18,9 +18,10 @@ body, html {
 
 .commentWidth {
     overflow: hidden;
-    width: 96%;
+    width: 98%;
     /*margin: 0 auto;*/
 }
+
 
 .header {
     overflow: hidden;
