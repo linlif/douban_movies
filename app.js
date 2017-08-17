@@ -1,5 +1,5 @@
 $(function () {
-  var count = 6;
+  var count = 8;
   var $ul = $('#ul');
   var $ul2 = $('#ul2');
   var $ul3 = $('#ul3');
@@ -15,7 +15,7 @@ $(function () {
           '<a target="_blank" href="' + datas[i].alt + '"><li>' +
           '<p class="topNum">Top.' + (json.start + i + 1) + '</p>' +
           '<h1 class="title">' + datas[i].title + '</h1>' +
-          '<p class="original_title">' + datas[i].original_title + '</p>' +
+          // '<p class="original_title">' + datas[i].original_title + '</p>' +
           '<div class="imgBox"><img src="' + datas[i].images.large + '"></div>' +
           '<p class="average">评分：<b class="score">' + datas[i].rating.average + '</b> 分</p>' +
           '<p class="genres">类型：' + datas[i].genres + '</p>' +
