@@ -19,9 +19,9 @@ body, html {
 }
 
 .commentWidth {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 10px;
+    /*padding: 0 10px;*/
 }
 
 .header {
@@ -156,10 +156,13 @@ body, html {
 }
 
 .header .serachBox .submit {
+    display: block;
     flex: 0 0 50px;
     border: none;
     width: 50px;
     height: 34px;
+    line-height: 34px;
+    text-align: center;
     background-color: rgb(146, 155, 162);
     color: white;
     outline: none;
